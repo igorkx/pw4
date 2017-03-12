@@ -1,0 +1,32 @@
+.artigo {
+		background-color: #ffffff;
+		border: 1px solid black;
+		opacity: 0.8;
+		filter: alpha(opacity=60);
+	
+}
+.imagem img {
+	display:block;
+		position:relative;
+		margin:auto;
+		width: 50%;
+		height: auto;
+		border-style: none;
+		border-width: medium;
+		background-color: #ffffff;
+		border: 1px solid black;
+		background-size: cover;
+	
+}
+.imagem {
+	position:relative;
+    margin: auto;
+}
+
+p{
+		margin:5%;
+		font-weight: bold;
+		color: #00000;
+		text-indent: 50px;
+		text-align: justify;
+}

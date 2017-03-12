@@ -6,39 +6,22 @@
         <title>home</title>
     </head>
     <body>
-        <h1>PRODUTOS TECNOLÓGICOS</h1>
+        <h1>site de noticias teste</h1>
         <ul>
             <li>
                 <a class="inicio" href="#inicio">Início</a>
             </li>
-            <li class="dropdown">
-                <button class="dropbtn">Novidades</button>
-                <div class="dropdown-content">
-                    <a href="pagina1.html">Celular Tela Flexivel</a>
-                    <a href="pagina2.html">Smartbands</a>
-                    <a href="pagina3.html">Realidade virtual</a>
-                    <a href="pagina4.html">Arma Anti Drones</a>
-                    <a href="pagina5.html">Realidade Aumentada</a>
-                </div>
+            <li>
+                <td colspan="2">Não está registrado!! <a href="cadastro.jsp">Registre Aqui</a></td>
             </li>
-            <li class="dropdown">
-                <button class="dropbtn">Informática</button>
-                <div class="dropdown-content">
-                    <a href="pagina6.html">Monitores</a>
-                    <a href="pagina7.html">Computadores</a>
-                    <a href="pagina8.html">Notebooks</a>
-                    <a href="pagina9.html">Placas de video</a>
-                    <a href="pagina10.html">Processadores</a>
-                </div>
-            </li>
-            <li class="dropdown">
-                <button class="dropbtn">Aparelhos Eletronicos</button>
-                <div class="dropdown-content">
-                    <a href="pagina11.html">Cameras Digitais</a>
-                    <a href="pagina12.html">Smartphones</a>
-                    <a href="pagina13.html">Drones</a>
-                    <a href="pagina14.html">Video Gamess</a>
-                </div>
+            <li>
+                <h1>noticias</h1>
+                
+                <a href="pagina1.html">categoria1a</a><br>
+                    <a href="pagina2.html">categoria1b</a><br>
+                    <a href="pagina3.html">categoria1c </a><br>
+                    <a href="pagina4.html">categoria1d</a><br>
+                    <a href="pagina5.html">categoria1e</a><br>                
             </li>
         </ul>
         <!--<form method="post" action="Servlet">

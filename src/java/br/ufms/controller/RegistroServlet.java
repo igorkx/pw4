@@ -16,7 +16,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author igor
  */
-@WebServlet(name = "Servlet", urlPatterns = {"/Servlet"})
-public class Servlet extends HttpServlet {
+@WebServlet(name = "RegistroServlet", urlPatterns = {"/RegistroServlet"})
+public class RegistroServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,10 +44,10 @@ public class Servlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet</title>");
+            out.println("<title>Servlet RegistroServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Servlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RegistroServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -81,63 +80,41 @@ public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        String url = "jdbc:postgresql://localhost:5432/noticiario";
+        //dados do bd
+        String url = "jdbc:postgresql://localhost:5432/Noticiario";
         String usuario = "postgres";
-        String senhadb = "123";
-
+        String senhabd = "123";
+        //dados do cadastro
+        String nome = request.getParameter("nome");
+        String categoria = request.getParameter("categoria");
+        String login = request.getParameter("login");
+        String senha = request.getParameter("senha");
         try {
+            //conexão
             Class.forName("org.postgresql.Driver");
-            out.println("acessando banco");
-            Connection conexao = DriverManager.getConnection(url, usuario, senhadb);
-            Statement stm = conexao.createStatement();
-            out.println("entrou no banco");
-            String login = request.getParameter("email");
-            String senha = request.getParameter("senha");
-            out.println("" + login + " " + senha);
-
-            ResultSet res = stm.executeQuery("SELECT * FROM login WHERE email='" + login + "' AND senha='" + senha + "'");
-            
+            Connection con = DriverManager.getConnection(url, usuario, senhabd);
+            Statement stm = con.createStatement();
+            //confere se email e cpf ja existem
+            ResultSet res = stm.executeQuery("SELECT * FROM login WHERE email='" + login + "' AND cpf='" + senha + "'");
             if (res.next()) {
-                //Criando sessao
-                request.getSession().setAttribute("login", login);
-                request.getSession().setAttribute("senha", senha);
-                
- 
-                //Criando Cookies
-               /*
-                Cookie cookieNome = new Cookie("cnome", res.getString("nome"));
-                Cookie cookieEstado = new Cookie("cestado", res.getString("estado"));
-                Cookie cookieCidade = new Cookie("ccidade", res.getString("cidade"));
-                Cookie cookieEndereco = new Cookie("cendereco", res.getString("endereco"));
-                Cookie cookieBairro = new Cookie("cbairro", res.getString("bairro"));
-                Cookie cookieCep = new Cookie("ccep", res.getString("cep"));
-                response.addCookie(cookieNome);
-                response.addCookie(cookieEstado);
-                response.addCookie(cookieCidade);
-                response.addCookie(cookieEndereco);
-                response.addCookie(cookieBairro);
-                response.addCookie(cookieCep);
-                response.sendRedirect("confirma sessao.jsp");*/
-
+                //redireciona pagina
+                response.sendRedirect("erroCadastro.jsp");
             } else {
-                request.setAttribute("erro", "Login ou senha incorretos");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                int i = stm.executeUpdate("INSERT INTO login VALUES('" + nome + "','" + login + "','" + senha + "','" + categoria + "')");
+                out.println("registrado");
+                if (i > 0) {
+                    
+                    response.sendRedirect("CadastroConfirmado.jsp");
+                    
+                } else {
+                    response.sendRedirect("index.jsp");
+                }
             }
-            
-        } catch (ClassNotFoundException ex) {
-            out.println("problema 1");
-            Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            out.println("problema 2");
-            Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(RegistroServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="StyleSheet" type="text/css" href="\Users\igor\Documents\NetBeansProjects\TrabalhoPW4\Trabalho4\web\CSS\style.css" media="screen" >
+        <link rel="StyleSheet" type="text/css" href="\TrabalhoPW4\Trabalho4\web\CSS\style.css" media="screen" >
         <title>home</title>
     </head>
     <body>

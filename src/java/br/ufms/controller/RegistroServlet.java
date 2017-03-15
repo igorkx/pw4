@@ -86,7 +86,9 @@ public class RegistroServlet extends HttpServlet {
         String senhabd = "123";
         //dados do cadastro
         String nome = request.getParameter("nome");
-        String categoria = request.getParameter("categoria");
+        String categoria1 = request.getParameter("categoria1");
+        String categoria2 = request.getParameter("categoria2");
+        String email = request.getParameter("email");
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         try {
@@ -100,7 +102,7 @@ public class RegistroServlet extends HttpServlet {
                 //redireciona pagina
                 response.sendRedirect("erroCadastro.jsp");
             } else {
-                int i = stm.executeUpdate("INSERT INTO login VALUES('" + nome + "','" + login + "','" + senha + "','" + categoria + "')");
+                int i = stm.executeUpdate("INSERT INTO login VALUES('" + nome + "','" + login + "','" + senha + "','" + email + "','" + categoria1 + "','" + categoria2 + "')");
                 out.println("registrado");
                 if (i > 0) {
                     

@@ -19,11 +19,24 @@
                             <td><input type="text" name="nome" required/></td>
                         </tr>                       
                         <tr>
-                            <td>Categoria</td>
-                            <td><input type="text" name="categoria" required/></td>
-                        </tr>
+                            <td colspan="2">
+                                <label><input type="radio" name="categoria1" value="Administrador">Administrador</label><br>
+                                <label><input type="radio" name="categoria1" value="Autor">Autor</label><br>
+                            </td>
+                        <tr>
+                        <tr>
+                            <td colspan="2">
+                                <label><input type="radio" name="categoria2" value="Entretenimento">Entretenimento</label><br>
+                                <label><input type="radio" name="categoria2" value="Moda">Moda</label><br>
+                                <label><input type="radio" name="categoria2" value="Esporte">Esporte</label><br>
+                                <label><input type="radio" name="categoria2" value="Política">Política</label><br>
+                            </td>
                         <tr>
                             <td>Email</td>
+                            <td><input type="text" name="email" required/></td>
+                        </tr>
+                        <tr>
+                            <td>Login</td>
                             <td><input type="text" name="login" required/></td>
                         </tr>
                         <tr>

@@ -15,13 +15,9 @@
                 <td colspan="2">Não está registrado!! <a href="cadastro.jsp">Registre Aqui</a></td>
             </li>
             <li>
-                <h1>noticias</h1>
-                
+                <h1>noticias</h1>                
                 <a href="pagina1.html">categoria1a</a><br>
-                    <a href="pagina2.html">categoria1b</a><br>
-                    <a href="pagina3.html">categoria1c </a><br>
-                    <a href="pagina4.html">categoria1d</a><br>
-                    <a href="pagina5.html">categoria1e</a><br>                
+                <a href="pagina2.html">categoria1b</a><br>              
             </li>
         </ul>
         <!--<form method="post" action="Servlet">

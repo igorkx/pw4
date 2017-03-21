@@ -3,56 +3,40 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro Usuario</title>
+        <link rel="stylesheet" href="CSS\stylerForm.css">
     </head>
     <body>
-        <form method="post" action="RegistroServlet">
-            <center>
-                <table border="1" width="30%" cellpadding="5">
-                    <thead>
-                        <tr>
-                            <th colspan="2">Entre com suas informações aqui</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Nome</td>
-                            <td><input type="text" name="nome" required/></td>
-                        </tr>                       
-                        <tr>
-                            <td colspan="2">
-                                <label><input type="radio" name="categoria1" value="Administrador">Administrador</label><br>
-                                <label><input type="radio" name="categoria1" value="Autor">Autor</label><br>
-                            </td>
-                        <tr>
-                        <tr>
-                            <td colspan="2">
-                                <label><input type="radio" name="categoria2" value="Entretenimento">Entretenimento</label><br>
-                                <label><input type="radio" name="categoria2" value="Moda">Moda</label><br>
-                                <label><input type="radio" name="categoria2" value="Esporte">Esporte</label><br>
-                                <label><input type="radio" name="categoria2" value="Política">Política</label><br>
-                            </td>
-                        <tr>
-                            <td>Email</td>
-                            <td><input type="text" name="email" required/></td>
-                        </tr>
-                        <tr>
-                            <td>Login</td>
-                            <td><input type="text" name="login" required/></td>
-                        </tr>
-                        <tr>
-                            <td>Senha</td>
-                            <td><input type="text" name="senha" required/></td>
-                        </tr>
-                        <tr>
-                            <td><input type="submit" value="Enviar" /></td>
-                            <td><input type="reset" value="Limpar" /></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Já Registrado!! <a href="index.jsp">Acessar Aqui</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </center>
-        </form>
+        <h3>Castro de usuario</h3>
+        <div>
+            <form action="/action_page.php">
+                <label for="nom">Nome</label></td>
+                <input type="text" id="nom" name="nome" placeholder="Digite seu nome" required/>
+
+                <label for="mail">Email</label>
+                <input type="text" id="mail" name="email" placeholder="Digite seu email" required/>
+
+                <label for="log">Login</label>
+                <input type="text" id="log" name="login" placeholder="Digite um Lgoin para acesso" required/>
+
+                <label for="sen">Senha</label>
+                <input type="text" id="sen" name="senha" placeholder="Digite uma Senha para acesso" required/>
+
+                <label for="cat1">Categoria</label>
+                <select id="cat" name="categoria1" required>
+                    <option value="entretimento">Entretenimento</option>
+                    <option value="moda">Moda</option>
+                    <option value="esporte">Esporte</option>
+                    <option value="politica">Politica</option>
+                </select>
+
+                <input type="submit" value="Confirmar">
+                <input type="reset" value="Limpar" />
+            </form>
+        </div>
+        <footer>
+            <div> 
+                <a href='logout.jsp'>Sair</a>
+            </div>
+        </footer>
     </body>
 </html>

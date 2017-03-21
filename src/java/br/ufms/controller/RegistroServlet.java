@@ -86,8 +86,7 @@ public class RegistroServlet extends HttpServlet {
         String senhabd = "123";
         //dados do cadastro
         String nome = request.getParameter("nome");
-        String categoria1 = request.getParameter("categoria1");
-        String categoria2 = request.getParameter("categoria2");
+        String categoria = request.getParameter("categoria");
         String email = request.getParameter("email");
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
@@ -96,13 +95,13 @@ public class RegistroServlet extends HttpServlet {
             Class.forName("org.postgresql.Driver");
             Connection con = DriverManager.getConnection(url, usuario, senhabd);
             Statement stm = con.createStatement();
-            //confere se email e cpf ja existem
-            ResultSet res = stm.executeQuery("SELECT * FROM login WHERE email='" + login + "' AND cpf='" + senha + "'");
+            //confere se o usuario ja existente esta fazendo cadastro na mesma categoria 
+            ResultSet res = stm.executeQuery("SELECT * FROM usuario WHERE login='" + login + "' AND categoria='" + categoria + "'");
             if (res.next()) {
                 //redireciona pagina
                 response.sendRedirect("erroCadastro.jsp");
             } else {
-                int i = stm.executeUpdate("INSERT INTO login VALUES('" + nome + "','" + login + "','" + senha + "','" + email + "','" + categoria1 + "','" + categoria2 + "')");
+                int i = stm.executeUpdate("INSERT INTO usuario VALUES(default,'" + nome + "', '" + login + "', '" + senha + "', '" + email + "', 'autor', '" + categoria + "')");
                 out.println("registrado");
                 if (i > 0) {
                     

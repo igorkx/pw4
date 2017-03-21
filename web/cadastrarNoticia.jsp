@@ -2,36 +2,38 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastro Usuario</title>
+        <title>Cadastro Noticias</title>
+        <link rel="stylesheet" href="CSS\stylerForm.css">
     </head>
     <body>
-        <form method="post" action="RegistrarNoticia">
-            <center>
-                <table border="1" width="30%" cellpadding="5">
-                    <tbody>
-                        <tr>
-                            <td>Titulo</td>
-                            <td><input type="text" name="titulo" required/></td>
-                        </tr>                       
-                        <tr>
-                            <td>Conteudo</td>
-                            <td><input type="text" name="texto" required/></td>
-                        </tr>
-                        <tr>
-                            <td>Imagem</td>
-                            <td><input type="text" name="imagem" required/></td>
-                        </tr>
-                        <tr>
-                            <td>Categoria</td>
-                            <td><input type="text" name="categoria" required/></td>
-                        </tr>
-                        <tr>
-                            <td><input type="submit" value="Enviar" /></td>
-                            <td><input type="reset" value="Limpar" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </center>
-        </form>
+        <h3>Registro de Notícias</h3>
+        <div>
+            <form action="/action_page.php">
+                <label for="tittle">Titulo</label></td>
+                <input type="text" id="tittle" name="titulo" placeholder="Titulo da noticia" required/>
+
+                <label for="cont">Conteudo</label>
+                <input type="text" id="tittle" name="conteudo" placeholder="Conteudo da noticia" required/>
+
+                <label for="img">Imagem</label>
+                <input type="text" id="img" name="imagem" placeholder="Insira imagem" required/>
+
+                <label for="cat">Categoria</label>
+                <select id="cat" name="categoria" required>
+                    <option value="entretimento">Entretenimento</option>
+                    <option value="moda">Moda</option>
+                    <option value="esporte">Esporte</option>
+                    <option value="politica">Politica</option>
+                </select>
+
+                <input type="submit" value="Confirmar">
+                <input type="reset" value="Limpar" />
+            </form>
+        </div>
+        <footer>
+            <div> 
+                <a href='logout.jsp'>Sair</a>
+            </div>
+        </footer>
     </body>
 </html>

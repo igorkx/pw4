@@ -81,21 +81,18 @@ public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        String url = "jdbc:postgresql://localhost:5432/noticiario";
+        String url = "jdbc:postgresql://localhost:5432/Noticiario";
         String usuario = "postgres";
         String senhadb = "123";
 
         try {
             Class.forName("org.postgresql.Driver");
-            out.println("acessando banco");
             Connection conexao = DriverManager.getConnection(url, usuario, senhadb);
             Statement stm = conexao.createStatement();
-            out.println("entrou no banco");
-            String login = request.getParameter("email");
+            String login = request.getParameter("login");
             String senha = request.getParameter("senha");
-            out.println("" + login + " " + senha);
 
-            ResultSet res = stm.executeQuery("SELECT * FROM login WHERE email='" + login + "' AND senha='" + senha + "'");
+            ResultSet res = stm.executeQuery("SELECT * FROM usuario WHERE login='" + login + "' AND senha='" + senha + "'");
             
             if (res.next()) {
                 //Criando sessao
@@ -116,8 +113,8 @@ public class Servlet extends HttpServlet {
                 response.addCookie(cookieCidade);
                 response.addCookie(cookieEndereco);
                 response.addCookie(cookieBairro);
-                response.addCookie(cookieCep);
-                response.sendRedirect("confirma sessao.jsp");*/
+                response.addCookie(cookieCep);*/
+                response.sendRedirect("confirma sessao.jsp");
 
             } else {
                 request.setAttribute("erro", "Login ou senha incorretos");

@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="CSS\black-theme.css">
         <link rel="stylesheet" href="CSS\style2.css">
         <link rel="stylesheet" href="CSS\font-awesome.min.css">
-        <link rel="stylesheet" href="CSS\style.css">
         <style>
             html,body,h1,h2,h3,h4,h5,h6 {font-family: sans-serif}
         </style>
@@ -18,11 +17,11 @@
             <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
                 <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
                 <a href="#" class="w3-bar-item w3-button w3-theme-l1">Inicio</a>
-                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Entretenimento</a>
-                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Moda</a>
-                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Esporte</a>
-                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Política</a>
-                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Cadastrar</a>
+                <a href="entretenimento.jsp" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Entretenimento</a>
+                <a href="moda.jsp" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Moda</a>
+                <a href="esporte.jsp" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Esporte</a>
+                <a href="politica.jsp" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Política</a>
+                <a href="cadastroUsuario.jsp" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Cadastrar</a>
             </div>
         </div>
         <!-- Acesso -->

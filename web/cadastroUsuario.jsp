@@ -12,11 +12,13 @@
                 <label for="nom">Nome</label></td>
                 <input type="text" id="nom" name="nome" placeholder="Digite seu nome" required/>
 
+                <label for="log">Login</label>
+                <input type="text" id="log" name="login" placeholder="Digite um Lgoin para acesso" required/>
+                
                 <label for="mail">Email</label>
                 <input type="text" id="mail" name="email" placeholder="Digite seu email" required/>
 
-                <label for="log">Login</label>
-                <input type="text" id="log" name="login" placeholder="Digite um Lgoin para acesso" required/>
+                
 
                 <label for="sen">Senha</label>
                 <input type="text" id="sen" name="senha" placeholder="Digite uma Senha para acesso" required/>

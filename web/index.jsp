@@ -4,6 +4,7 @@
         <title>inicio</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="CSS\black-theme.css">
+        <link rel="stylesheet" href="CSS\bootstrap.css">
         <link rel="stylesheet" href="CSS\style2.css">
         <link rel="stylesheet" href="CSS\font-awesome.min.css">
         <style>
@@ -65,3 +66,4 @@
         </div>
     </body>
 </html>
+

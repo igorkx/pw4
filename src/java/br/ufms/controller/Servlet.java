@@ -99,7 +99,7 @@ public class Servlet extends HttpServlet {
             String acao = request.getParameter("acao");
             //lista noticias
             
-            if(acao.equals("listar")){
+            /*if(acao.equals("listar")){
             ResultSet rs = stm.executeQuery("SELECT * FROM noticia");
             List<Noticias> lista = new ArrayList<>();
             while (rs.next()) {
@@ -113,7 +113,7 @@ public class Servlet extends HttpServlet {
             }
             request.getSession().setAttribute("lista", lista);
             response.sendRedirect("index.jsp");
-            }
+            }*/
             
             //verifica senha e login no BD
             if(acao.equals("acesso")){
@@ -125,19 +125,9 @@ public class Servlet extends HttpServlet {
                 request.getSession().setAttribute("senha", senha);
 
                 //Criando Cookies
-                /*
-                Cookie cookieNome = new Cookie("cnome", res.getString("nome"));
-                Cookie cookieEstado = new Cookie("cestado", res.getString("estado"));
-                Cookie cookieCidade = new Cookie("ccidade", res.getString("cidade"));
-                Cookie cookieEndereco = new Cookie("cendereco", res.getString("endereco"));
-                Cookie cookieBairro = new Cookie("cbairro", res.getString("bairro"));
-                Cookie cookieCep = new Cookie("ccep", res.getString("cep"));
-                response.addCookie(cookieNome);
-                response.addCookie(cookieEstado);
-                response.addCookie(cookieCidade);
-                response.addCookie(cookieEndereco);
-                response.addCookie(cookieBairro);
-                response.addCookie(cookieCep);*/
+                Cookie cookieId_usuario = new Cookie("id_user", res.getString("id_usuario"));
+                response.addCookie(cookieId_usuario);
+              
                 response.sendRedirect("confirma sessao.jsp");
 
             } else {

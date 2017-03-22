@@ -19,8 +19,8 @@
             %>
             <h3>Bem vindo</h3><br>
             <h3><%=session.getAttribute("login")%></h3>
-            <div><a href='calculo.jsp'>Pagina de Calculo</a><br></div>
-            <div><a href='logout.jsp'>Sair</a><br></div>
+            <div><a href='autorPage.jsp'>Sua Noticias</a><br></div>
+            <div><a href='sair.jsp'>Sair</a><br></div>
                 <%
                     }
                 %>

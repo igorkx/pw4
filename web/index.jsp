@@ -1,9 +1,17 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.util.logging.Logger"%>
+<%@page import="java.util.logging.Level"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="br.ufms.model.Noticias"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>inicio</title>
+        <title>Home</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="CSS\black-theme.css">
         <link rel="stylesheet" href="CSS\bootstrap.css">
@@ -37,18 +45,45 @@
                 <input type="text" name="senha" value="" />
                 <input type="submit" value="Confirmar" />
                 <input type="reset" value="Limpar" />
-            </form><br>
-            <form action="Servlet?acao=listar" method="post">
-                <input type="submit" value="Mostrar noticias">
             </form>
         </nav> 
-        <!--Falta arrumar as noticias-->
+        <!--Listar Noticias-->
         <%
+            String url = "jdbc:postgresql://localhost:5432/Noticiario";
+            String usuario = "postgres";
+            String senhadb = "123";
+
+            try {
+                //Faz conexão com BD
+                Class.forName("org.postgresql.Driver");
+                Connection conexao = DriverManager.getConnection(url, usuario, senhadb);
+                Statement stm = conexao.createStatement();
+                //lista noticias por categoria
+                ResultSet rs = stm.executeQuery("SELECT * FROM noticia");
+                List<Noticias> lista = new ArrayList<>();
+                while (rs.next()) {
+                    Noticias noticia = new Noticias();
+                    noticia.setId_noticia(rs.getInt("id_noticia"));
+                    noticia.setTitulo(rs.getString("titulo"));
+                    noticia.setImagem(rs.getString("imagem"));
+                    noticia.setCategoria(rs.getString("categoria"));
+                    noticia.setId_usuario(rs.getInt("id_usuario"));
+                    lista.add(noticia);
+                }
+                request.getSession().setAttribute("lista", lista);
+                conexao.close();
+                stm.close();
+                rs.close();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             if (session.getAttribute("lista") != null) {
                 List<Noticias> lista = (List<Noticias>) session.getAttribute("lista");
                 for (int i = 0; i < lista.size(); i++) {
         %>
-        <!-- Overlay effect when opening sidebar on small screens -->
         <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
         <div class="w3-main" style="margin-left:250px">
             <div class="w3-row w3-padding-64">

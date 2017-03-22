@@ -10,19 +10,14 @@ package br.ufms.model;
  * @author igor
  */
 public class Noticias {
-    private String id_noticia;
+    private int id_noticia;
     private String titulo;
     private String texto;
 	private String imagem;
          private String categoria;
+         private int id_usuario;
          /** id_usuario - falata fazer chave estrangeira*/ 
         
-       public String getId_noticia() {
-		return id_noticia;
-	}
-	public void setId_noticia(String id_noticia) {
-		this.id_noticia = id_noticia;
-	}
         
         public String getTitulo() {
 		return titulo;
@@ -52,4 +47,32 @@ public class Noticias {
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
+
+    /**
+     * @return the id_noticia
+     */
+    public int getId_noticia() {
+        return id_noticia;
+    }
+
+    /**
+     * @param id_noticia the id_noticia to set
+     */
+    public void setId_noticia(int id_noticia) {
+        this.id_noticia = id_noticia;
+    }
+
+    /**
+     * @return the id_usuario
+     */
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    /**
+     * @param id_usuario the id_usuario to set
+     */
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
+    }
 }

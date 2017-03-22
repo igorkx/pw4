@@ -5,6 +5,7 @@
  */
 package br.ufms.controller;
 
+import br.ufms.model.Noticias;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -12,6 +13,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -81,27 +84,48 @@ public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
+        //dados do BD
         String url = "jdbc:postgresql://localhost:5432/Noticiario";
         String usuario = "postgres";
         String senhadb = "123";
 
         try {
+            //Faz conexão com BD
             Class.forName("org.postgresql.Driver");
             Connection conexao = DriverManager.getConnection(url, usuario, senhadb);
             Statement stm = conexao.createStatement();
             String login = request.getParameter("login");
             String senha = request.getParameter("senha");
-
-            ResultSet res = stm.executeQuery("SELECT * FROM usuario WHERE login='" + login + "' AND senha='" + senha + "'");
+            String acao = request.getParameter("acao");
+            //lista noticias
             
+            if(acao.equals("listar")){
+            ResultSet rs = stm.executeQuery("SELECT * FROM noticia");
+            List<Noticias> lista = new ArrayList<>();
+            while (rs.next()) {
+                Noticias noticia = new Noticias();
+                noticia.setId_noticia(rs.getInt("id_noticia"));
+                noticia.setTitulo(rs.getString("titulo"));
+                noticia.setImagem(rs.getString("imagem"));
+                noticia.setCategoria(rs.getString("categoria"));
+                noticia.setId_usuario(rs.getInt("id_usuario"));
+                lista.add(noticia);
+            }
+            request.getSession().setAttribute("lista", lista);
+            response.sendRedirect("index.jsp");
+            }
+            
+            //verifica senha e login no BD
+            if(acao.equals("acesso")){
+            ResultSet res = stm.executeQuery("SELECT * FROM usuario WHERE login='" + login + "' AND senha='" + senha + "'");
+
             if (res.next()) {
                 //Criando sessao
                 request.getSession().setAttribute("login", login);
                 request.getSession().setAttribute("senha", senha);
-                
- 
+
                 //Criando Cookies
-               /*
+                /*
                 Cookie cookieNome = new Cookie("cnome", res.getString("nome"));
                 Cookie cookieEstado = new Cookie("cestado", res.getString("estado"));
                 Cookie cookieCidade = new Cookie("ccidade", res.getString("cidade"));
@@ -120,7 +144,7 @@ public class Servlet extends HttpServlet {
                 request.setAttribute("erro", "Login ou senha incorretos");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
-            
+            }
         } catch (ClassNotFoundException ex) {
             out.println("problema 1");
             Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);

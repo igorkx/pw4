@@ -95,7 +95,7 @@ public class RegistrarNoticia extends HttpServlet {
             Connection con = DriverManager.getConnection(url, usuario, senhabd);
             Statement stm = con.createStatement();
 
-            int i = stm.executeUpdate("INSERT INTO login VALUES('" + titulo + "','" + texto + "','" + imagem + "','" + categoria + "')");
+            int i = stm.executeUpdate("INSERT INTO noticia VALUES(default,'" + titulo + "','" + texto + "','" + imagem + "','" + categoria + "')");
             out.println("registrado");
             if (i > 0) {
                 response.sendRedirect("CadastroConfirmado.jsp");

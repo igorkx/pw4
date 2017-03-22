@@ -13,7 +13,7 @@
                 <input type="text" id="nom" name="nome" placeholder="Digite seu nome" required/>
 
                 <label for="log">Login</label>
-                <input type="text" id="log" name="login" placeholder="Digite um Lgoin para acesso" required/>
+                <input type="text" id="log" name="login" placeholder="Digite um Login para acesso" required/>
                 
                 <label for="mail">Email</label>
                 <input type="text" id="mail" name="email" placeholder="Digite seu email" required/>
